@@ -1,0 +1,315 @@
+:root {
+  --bg: #f7f8fc;
+  --text: #0f172a;
+  --muted: rgba(15, 23, 42, 0.68);
+  --border: rgba(15, 23, 42, 0.08);
+  --card: rgba(255, 255, 255, 0.92);
+  --shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+  --r: 18px;
+  --p: #611bf8;
+}
+
+.appShell {
+  min-height: 100%;
+  background: radial-gradient(
+      circle at 20% 0%,
+      rgba(97, 27, 248, 0.08),
+      rgba(97, 27, 248, 0) 55%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(16, 185, 129, 0.06),
+      rgba(16, 185, 129, 0) 55%
+    ),
+    var(--bg);
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.bgGlow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.bgGlow.a {
+  top: -160px;
+  left: -140px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(97, 27, 248, 0.85),
+    rgba(97, 27, 248, 0) 65%
+  );
+}
+
+.bgGlow.b {
+  bottom: -190px;
+  right: -160px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(16, 185, 129, 0.55),
+    rgba(16, 185, 129, 0) 65%
+  );
+}
+
+.appTop {
+  background: rgba(255, 255, 255, 0.78);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.appTopInner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 18px 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.brandIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(97, 27, 248, 0.12),
+    rgba(97, 27, 248, 0.06)
+  );
+  border: 1px solid rgba(97, 27, 248, 0.16);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 18px 34px rgba(97, 27, 248, 0.14);
+  flex: 0 0 auto;
+}
+
+.brandIcon span {
+  width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background: var(--p);
+  box-shadow: 0 12px 22px rgba(97, 27, 248, 0.3);
+  display: block;
+}
+
+.brandTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.appTitle {
+  font-size: 18px;
+  font-weight: 950;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.appSub {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 640px;
+  line-height: 1.5;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(15, 23, 42, 0.04);
+  color: rgba(15, 23, 42, 0.85);
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  text-transform: lowercase;
+}
+
+.pill.ok {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.12);
+  color: #065f46;
+}
+
+.pill.down {
+  border-color: rgba(244, 63, 94, 0.35);
+  background: rgba(244, 63, 94, 0.12);
+  color: #9f1239;
+}
+
+.topRight {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.miniCard {
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 10px 12px;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+}
+
+.miniLabel {
+  font-size: 11px;
+  color: rgba(15, 23, 42, 0.6);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.miniValue {
+  margin-top: 7px;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.9);
+}
+
+.appContainer {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 18px 16px 50px;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.mainCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mainCard:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r);
+  background: linear-gradient(
+    180deg,
+    rgba(97, 27, 248, 0.08),
+    rgba(97, 27, 248, 0) 50%
+  );
+  pointer-events: none;
+}
+
+.infoPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.infoCard {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.infoCard:before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(
+    circle at 10% 0%,
+    rgba(97, 27, 248, 0.12),
+    rgba(97, 27, 248, 0) 60%
+  );
+  pointer-events: none;
+}
+
+.infoTitle {
+  font-size: 13px;
+  font-weight: 950;
+  margin-bottom: 7px;
+  position: relative;
+  z-index: 1;
+}
+
+.infoText {
+  font-size: 13px;
+  color: rgba(15, 23, 42, 0.72);
+  line-height: 1.55;
+  position: relative;
+  z-index: 1;
+}
+
+.appFooter {
+  margin-top: 16px;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.65);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.dot {
+  margin: 0 2px;
+}
+
+code {
+  background: rgba(15, 23, 42, 0.05);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+}
+
+@media (max-width: 960px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .topRight {
+    display: none;
+  }
+
+  .appTopInner {
+    padding: 16px 14px;
+  }
+
+  .mainCard {
+    padding: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .appTop {
+    backdrop-filter: none;
+  }
+}
