@@ -12,6 +12,7 @@ const { getExpiryNowMs } = require("./utils/time");
 const { notFoundJson, errorHandler } = require("./middleware/error");
 
 const app = express();
+app.set("trust proxy", 1);
 
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(compression());
