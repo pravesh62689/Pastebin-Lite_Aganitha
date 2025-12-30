@@ -125,12 +125,9 @@ app.get("/p/:id", async (req, res) => {
 
 const distPath = path.resolve(__dirname, "../../frontend/dist");
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production" && fs.existsSync(distPath)) {
   app.use(express.static(distPath));
-
-  app.get("/", (req, res) => {
-    return res.sendFile(path.join(distPath, "index.html"));
-  });
+  app.get("/", (req, res) => res.sendFile(path.join(distPath, "index.html")));
 }
 
 app.use(notFoundJson);
