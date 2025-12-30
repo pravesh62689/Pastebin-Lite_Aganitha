@@ -123,11 +123,41 @@ app.get("/p/:id", async (req, res) => {
   }
 });
 
-const distPath = path.resolve(__dirname, "../../frontend/dist");
-
-if (process.env.NODE_ENV === "production" && fs.existsSync(distPath)) {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(distPath));
-  app.get("/", (req, res) => res.sendFile(path.join(distPath, "index.html")));
+  app.get("/", (req, res) =>
+    res.sendFile(
+      `
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paste ${escapeHtml(id)}</title>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; margin: 0; background:#0b0f19; color:#e5e7eb; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 28px 16px 56px; }
+    .card { background:#111827; border:1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 18px; }
+    h1 { font-size: 16px; letter-spacing: .2px; margin: 0 0 12px; color:#cbd5e1; }
+    pre { white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 14px; line-height: 1.5; color:#f8fafc; }
+    .meta { margin-top: 12px; font-size: 12px; color:#94a3b8; display:flex; gap:12px; flex-wrap:wrap; }
+    .pill { padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.10); }
+    a { color: #a78bfa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      < h1>Pastebin Lite</h1>
+      <p>This is the backend server for Pastebin Lite. Please visit the frontend application to create and view pastes.</p>
+    </div>
+  </div>
+</body>
+</html>
+      `.trim()
+    )
+  );
 }
 
 app.use(notFoundJson);
