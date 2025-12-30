@@ -141,6 +141,3 @@ View in browser:
 - App (Vercel): [https://pastebin-lite-aganitha-1s5wg7lqd-pravesh-s-projects-ed622e2e.vercel.app/](https://pastebin-lite-aganitha-1s5wg7lqd-pravesh-s-projects-ed622e2e.vercel.app/)
 - Server (Railway): [https://pastebin-liteaganitha-production.up.railway.app/](https://pastebin-liteaganitha-production.up.railway.app/)
 
-```
-
-```
