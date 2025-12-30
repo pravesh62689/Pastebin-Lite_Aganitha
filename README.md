@@ -1,4 +1,4 @@
-````md
+
 # Pastebin Lite (React + Express)
 
 A small Pastebin-like application where users can create text pastes and share a link to view them. Pastes can optionally expire by time (TTL) and/or view count.
@@ -48,7 +48,7 @@ PORT=8080
 TEST_MODE=0
 NODE_ENV=development
 ```
-````
+
 
 ### 3) Install deps
 
