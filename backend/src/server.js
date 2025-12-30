@@ -124,7 +124,6 @@ app.get("/p/:id", async (req, res) => {
 });
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(distPath));
   app.get("/", (req, res) =>
     res.sendFile(
       `
