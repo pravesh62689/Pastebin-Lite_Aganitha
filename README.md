@@ -9,6 +9,15 @@ This repo is structured as two folders:
 
 > Persistence: **Postgres** (e.g., Neon) via `pg` (node-postgres). The backend auto-creates the required table on startup.
 
+
+---
+
+
+## Tech
+- Frontend: React (Vite) + Axios
+- Backend: Node.js + Express
+- Persistence: Postgres (Neon)
+
 ---
 
 ## Features (per spec)
@@ -40,6 +49,8 @@ Create `backend/.env` (see `backend/.env.example`):
 ```bash
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DB?sslmode=require"
 PORT=8080
+TEST_MODE=0
+NODE_ENV=development
 ```
 
 ### 3) Install deps
@@ -89,20 +100,6 @@ The backend will:
 - serve API routes under `/api/*`
 - serve paste HTML pages at `/p/:id` (server-rendered)
 
-### Render/Railway example
-A typical build command could be:
-```bash
-cd frontend && npm ci && npm run build && cd ../backend && npm ci
-```
-
-Start command:
-```bash
-cd backend && npm start
-```
-
-Make sure you set `DATABASE_URL` in the platform environment variables.
-
----
 
 ## API Examples
 
@@ -123,7 +120,14 @@ View in browser:
 
 ---
 
-## Design decisions (quick)
-- **Atomic view counting**: API fetch uses a single SQL `UPDATE ... WHERE ... RETURNING` so view limits are enforced correctly under concurrent load.
-- **No hardcoded localhost URLs**: share URLs are built from the incoming request host/protocol.
-- **Safe HTML rendering**: paste content is escaped before embedding into the HTML view.
+Deployment notes
+```bash
+Frontend is deployed on Vercel.
+Backend is deployed on Railway with Neon Postgres.
+If needed, Vercel rewrites can forward /api/* and /p/* to the backend so everything works from one domain.
+```
+---
+## Live URL
+- App: (https://pastebin-lite-aganitha-1s5wg7lqd-pravesh-s-projects-ed622e2e.vercel.app/)
+- Server: (https://pastebin-liteaganitha-production.up.railway.app/)
+
