@@ -59,7 +59,14 @@ export default function CreatePaste() {
         headers: { "Content-Type": "application/json" },
       });
 
-      setResult(res.data);
+      const data = res.data;
+      const origin = window.location.origin;
+      const fixedUrl = data?.id ? `${origin}/p/${data.id}` : data?.url;
+
+      setResult({
+        ...data,
+        url: fixedUrl,
+      });
 
       setContent("");
       setTtl("");
@@ -148,9 +155,9 @@ export default function CreatePaste() {
           {error ? (
             <span className="error">{error}</span>
           ) : (
-            <span className="smallText">
-              Constraints are checked on the backend.
-            </span>
+            <div className="smallText" style={{ marginTop: 8 }}>
+              This link opens from <code>{window.location.origin}</code>
+            </div>
           )}
         </div>
       </form>
